@@ -10,4 +10,11 @@ def compute_discount(bundles: list, products: list, cart_items: str) -> float:
     :return: float -> the total discount in euro
     """
 
+    if (
+        type(bundles) is not list
+        or type(products) is not list
+        or type(cart_items) is not str
+    ):
+        raise TypeError
+
     return 0
