@@ -62,6 +62,20 @@ class TestDiscountMethod(unittest.TestCase):
         )
         self.assertEqual(total_discount, 0)
 
+    def test_bundle_composed_from_same_element(self):
+        cart = "AQKQX-3571,FAWCD-2035"
+        total_discount = compute_discount(
+            self.discount_bundles, self.products_list, cart
+        )
+        self.assertEqual(total_discount, 83.18)
+
+    def test_same_products_match_more_than_one_bundle(self):
+        cart = "FAWCD-2035,RIMYD-0243,VYVLA-7385"
+        total_discount = compute_discount(
+            self.discount_bundles, self.products_list, cart
+        )
+        self.assertEqual(total_discount, 44.35)
+
 
 if __name__ == "__main__":
     unittest.main()
