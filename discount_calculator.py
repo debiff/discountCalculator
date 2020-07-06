@@ -1,4 +1,5 @@
 # Created by Simone Biffi at 7/6/20
+from collections import Counter
 
 
 def compute_discount(bundles: list, products: list, cart: str) -> float:
@@ -23,7 +24,13 @@ def compute_discount(bundles: list, products: list, cart: str) -> float:
 
     # Get the applicable bundles
     applicable_bundles: list = list(
-        filter(lambda bundle: set(bundle["products"]) <= set(cart_items), bundles)
+        filter(
+            lambda bundle: len(
+                list((Counter(bundle["products"]) - Counter(cart_items)).elements())
+            )
+            == 0,
+            bundles,
+        )
     )
 
     if len(applicable_bundles) > 0:
