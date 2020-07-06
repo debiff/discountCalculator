@@ -34,6 +34,20 @@ class TestDiscountMethod(unittest.TestCase):
                 self.discount_bundles, self.products_list, ["LNIAL-8393,JSVVX-8355"]
             )
 
+    def test_single_bundle_match(self):
+        cart = "HWKAM-9680,UGSXO-1999"
+        total_discount = compute_discount(
+            self.discount_bundles, self.products_list, cart
+        )
+        self.assertEqual(total_discount, 46.77)
+
+    def test_different_order_single_bundle_match(self):
+        cart = "UGSXO-1999,HWKAM-9680"
+        total_discount = compute_discount(
+            self.discount_bundles, self.products_list, cart
+        )
+        self.assertEqual(total_discount, 46.77)
+
 
 if __name__ == "__main__":
     unittest.main()
