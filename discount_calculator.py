@@ -17,4 +17,10 @@ def compute_discount(bundles: list, products: list, cart_items: str) -> float:
     ):
         raise TypeError
 
-    return 0
+    total_discount: float = 0
+
+    # Get list of cart item from the input string of ids
+    cart_item_list: list = cart_items.replace(" ", "").split(",")
+
+    print(cart_item_list)
+    return total_discount
