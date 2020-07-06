@@ -22,7 +22,9 @@ def compute_discount(bundles: list, products: list, cart: str) -> float:
     products_prices: dict = {product["sku"]: product["price"] for product in products}
 
     # Get the applicable bundles
-    applicable_bundles: list = []
+    applicable_bundles: list = list(
+        filter(lambda bundle: set(bundle["products"]) <= set(cart_items), bundles)
+    )
 
     if len(applicable_bundles) > 0:
         pass
