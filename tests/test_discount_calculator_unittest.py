@@ -28,6 +28,12 @@ class TestDiscountMethod(unittest.TestCase):
         )
         self.assertEqual(total_discount, 0)
 
+    def test_incorrect_parameter_type(self):
+        with self.assertRaises(TypeError):
+            compute_discount(
+                self.discount_bundles, self.products_list, ["LNIAL-8393,JSVVX-8355"]
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
