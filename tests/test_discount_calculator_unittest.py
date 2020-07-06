@@ -1,6 +1,6 @@
 import unittest
 import json
-from discount_calculator import compute_discount
+from src.discount_calculator import compute_discount
 
 
 class TestDiscountMethod(unittest.TestCase):
