@@ -22,5 +22,8 @@ def compute_discount(bundles: list, products: list, cart_items: str) -> float:
     # Get list of cart item from the input string of ids
     cart_item_list: list = cart_items.replace(" ", "").split(",")
 
-    print(cart_item_list)
+    # Convert the list of products in a dict of product.
+    products_prices: dict = {product["sku"]: product["price"] for product in products}
+
+    print(cart_item_list, products_prices)
     return total_discount
