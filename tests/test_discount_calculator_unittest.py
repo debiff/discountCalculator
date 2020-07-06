@@ -48,6 +48,20 @@ class TestDiscountMethod(unittest.TestCase):
         )
         self.assertEqual(total_discount, 46.77)
 
+    def test_six_products_without_bundle_match(self):
+        cart = "BMZZN-7122,OVVUK-8951,OWHEM-6595,HWYZJ-0056,FTGBE-9666,MOWIB-2747"
+        total_discount = compute_discount(
+            self.discount_bundles, self.products_list, cart
+        )
+        self.assertEqual(total_discount, 21.07)
+
+    def test_no_bundle_match(self):
+        cart = "LNIAL-8393,JSVVX-8355,EAZKL-0112,EAZKL-0112"
+        total_discount = compute_discount(
+            self.discount_bundles, self.products_list, cart
+        )
+        self.assertEqual(total_discount, 0)
+
 
 if __name__ == "__main__":
     unittest.main()
