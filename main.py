@@ -18,7 +18,10 @@ from src.discount_calculator import compute_discount
     help="Location of JSON file containing the products",
 )
 @click.option(
-    "--cart", default="", help="The products in the cart. Should be comma separated."
+    "--cart",
+    default="",
+    help="The products in the cart. Should be comma separated.",
+    required=True,
 )
 def main(bundles, products, cart):
     """Calculates the applicable discount given a list of discount bundle,
