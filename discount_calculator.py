@@ -27,7 +27,23 @@ def compute_discount(bundles: list, products: list, cart: str) -> float:
     )
 
     if len(applicable_bundles) > 0:
-        pass
+        # Calculate total discount for each applicable bundle
+        for current_bundle in applicable_bundles:
+            products_total_price: float = sum(
+                [products_prices[item_id] for item_id in current_bundle["products"]]
+            )
+            current_bundle["total_discount"] = (
+                products_total_price * current_bundle["discount"]
+            )
+
+        # Order applicable bundle by total discount and take the max
+        applicable_bundles = sorted(
+            applicable_bundles,
+            key=lambda bundle: bundle["total_discount"],
+            reverse=True,
+        )
+        total_discount = applicable_bundles[0]["total_discount"]
+
     elif len(cart_items) > 5:
         # If there isn't a bundle and in the cart there are more than 5 elements, apply 6% discount
         # to all products in the cart
