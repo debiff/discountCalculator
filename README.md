@@ -44,7 +44,7 @@ Options:
 
 
 ## Test
-To run the test suite execute from the parent folder containing the file flattify.py and the file test_flattify_unittest.py
+To run the test suite execute from root
 
 ```bash
 python -m unittest discover tests/
